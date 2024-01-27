@@ -1,6 +1,17 @@
-a = input('Original string is: ')
-vi_tri_giua = int(len(a)/2)
-print('Middle four chars are: ',a[(vi_tri_giua - 2) : (vi_tri_giua + 2)])
+def middle_four_chars():
+    while True:
+        try:
+            s = input("original string ")
+            if len(s) < 5:
+                raise ValueError("Error: The input string must have at least 5 characters.")
+            mid_index = len(s) // 2
+            middle_four_chars = s[mid_index - 2:mid_index + 2]
+            print("The middle four characters of the input string are:", middle_four_chars)
+            break
+        except ValueError as e:
+            print(e)
+
+middle_four_chars()
 
 
 s1 = 'Ault'
