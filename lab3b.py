@@ -1,38 +1,37 @@
-def are_anagrams(string1, string2):
-    string1 = ''.join(c.lower() for c in string1 if c.isalnum())
-    string2 = ''.join(c.lower() for c in string2 if c.isalnum())
-    return sorted(string1) == sorted(string2)
+def is_anagram():
+    while True:
+        try:
+            str1 = input("Enter the first string: ").strip().lower()
+            str2 = input("Enter the second string: ").strip().lower()
+            if len(str1) != len(str2):
+                raise ValueError("Error: The two strings must have the same length.")
+            sorted_str1 = ''.join(sorted(str1))
+            sorted_str2 = ''.join(sorted(str2))
+            if sorted_str1 == sorted_str2:
+                print("The two strings are anagrams.")
+            else:
+                print("The two strings are not anagrams.")
+            break
+        except ValueError as e:
+            print(e)
+
+# Testing the function
+is_anagram()
 
 
-def hex_to_decimal(hex_string):
-    # Convert the hexadecimal string to a list of characters
-    hex_chars = list(hex_string.strip().upper())
+def hex_to_decimal():
+    while True:
+        try:
+            hex_str = input("Enter a hexadecimal string: ").strip().upper()
+            if not all(c in '0123456789ABCDEF' for c in hex_str):
+                raise ValueError("Error: The input string must contain only hexadecimal digits.")
+            decimal_value = int(hex_str, 16)
+            print("The decimal value of the hexadecimal string is:", decimal_value)
+            break
+        except ValueError as e:
+            print(e)
 
-    # Initialize the decimal value to 0
-    decimal_value = 0
+# Testing the function
+hex_to_decimal()
 
-    # Iterate over the characters in the hexadecimal string
-    for i, char in enumerate(hex_chars):
-        # Check if the character is a valid hexadecimal digit
-        if char >= '0' and char <= '9':
-            value = int(char)
-        elif char >= 'A' and char <= 'F':
-            value = 10 + (ord(char) - ord('A'))
-        else:
-            return None
-
-        # Multiply the decimal value by 16 and add the value of the current hexadecimal digit
-        decimal_value = (decimal_value << 4) + value
-
-    # Return the decimal value
-    return decimal_value
-
-# Read a string from the user
-user_input = input("Enter a hexadecimal number: ")
-
-# Check if the string is a valid hexadecimal number
-decimal_value = hex_to_decimal(user_input)
-if decimal_value is None:
-    print("Error: The string is not a valid hexadecimal number.")
-else:
     print("The decimal value is:", decimal_value)
